@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 text-white w-full md:w-64 space-y-6 py-7 px-2 hidden md:block">
+            <div class="text-2xl font-semibold text-center">DevLab</div>
+            <nav>
+                <a href="index.html" class="block py-2.5 px-4 rounded hover:bg-gray-700">Dashboard</a>
+                <a href="analytics.html" class="block py-2.5 px-4 rounded hover:bg-gray-700">Analytics</a>
+                <a href="settings.html" class="block py-2.5 px-4 rounded bg-gray-700">Settings</a>
+                <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700">Logout</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-4 md:p-8">
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Settings</h1>
+            </header>
+
+            <!-- Account Settings -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Account Settings</h2>
+                <div>
+                    <label class="block text-gray-700 dark:text-gray-300">Username</label>
+                    <input type="text" class="w-full p-2 rounded border bg-gray-100 dark:bg-gray-700 dark:text-white" value="UV">
+                </div>
+                <div class="mt-4">
+                    <label class="block text-gray-700 dark:text-gray-300">Email</label>
+                    <input type="email" class="w-full p-2 rounded border bg-gray-100 dark:bg-gray-700 dark:text-white" value="uv@xmail.com">
+                </div>
+            </div>
+
+            <!-- Theme Settings -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Theme Settings</h2>
+                <label class="inline-flex items-center">
+                    <input type="checkbox" id="darkModeToggle" class="form-checkbox h-5 w-5 text-blue-600">
+                    <span class="ml-2 text-gray-700 dark:text-gray-300">Enable Dark Mode</span>
+                </label>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Notification Settings</h2>
+                <label class="block text-gray-700 dark:text-gray-300">
+                    <input type="checkbox" class="mr-2"> Email Notifications
+                </label>
+                <label class="block text-gray-700 dark:text-gray-300 mt-2">
+                    <input type="checkbox" class="mr-2"> Push Notifications
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('darkModeToggle').addEventListener('change', function() {
+            document.body.classList.toggle('dark');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div class="flex flex-col md:flex-row min-h-screen">
+        <!-- Sidebar -->
+        <div class="bg-gray-800 text-white w-full md:w-64 space-y-6 py-7 px-2 hidden md:block">
+            <div class="text-2xl font-semibold text-center">DevLab</div>
+            <nav>
+                <a href="index.html" class="block py-2.5 px-4 rounded hover:bg-gray-700">Dashboard</a>
+                <a href="Analytics.html" class="block py-2.5 px-4 rounded bg-gray-700">Analytics</a>
+                <a href="Settings.html" class="block py-2.5 px-4 rounded hover:bg-gray-700">Settings</a>
+                <a href="#" class="block py-2.5 px-4 rounded hover:bg-gray-700">Logout</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-4 md:p-8">
+            <header class="mb-8 flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Analytics</h1>
+            </header>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Total Views</h2>
+                    <p class="text-3xl font-bold text-blue-600 dark:text-blue-400">12.3K</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">+5% since last month</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Engagement Rate</h2>
+                    <p class="text-3xl font-bold text-green-600 dark:text-green-400">8.2%</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">+1.2% from last week</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">New Followers</h2>
+                    <p class="text-3xl font-bold text-pink-600 dark:text-pink-400">1,245</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">+120 this month</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Shares</h2>
+                    <p class="text-3xl font-bold text-purple-600 dark:text-purple-400">340</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">+15 from last week</p>
+                </div>
+            </div>
+
+            <!-- Analytics Graphs -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Engagement Trends</h2>
+                    <canvas id="engagementChart"></canvas>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Follower Growth</h2>
+                    <canvas id="followerChart"></canvas>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Likes Per Day</h2>
+                    <canvas id="likesChart"></canvas>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Shares Per Day</h2>
+                    <canvas id="sharesChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Chart(document.getElementById("engagementChart"), {
+            type: 'bar',
+            data: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{ label: 'Engagements', data: [320, 400, 300, 450, 500, 700, 600],
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'}]}});
+
+        new Chart(document.getElementById("followerChart"), {
+            type: 'pie',
+            data: { labels: ['New', 'Returning'],
+                datasets: [{ label: 'Followers', data: [70, 30],
+                    backgroundColor: ['rgba(255, 99, 132, 0.5)', 'rgba(54, 162, 235, 0.5)']}]} });
+
+        new Chart(document.getElementById("likesChart"), {
+            type: 'line',
+            data: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{ label: 'Likes', data: [200, 250, 220, 270, 300, 350, 320],
+                    borderColor: 'rgba(75, 192, 192, 0.5)', fill: false}]}});
+
+        new Chart(document.getElementById("sharesChart"), {
+            type: 'line',
+            data: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{ label: 'Shares', data: [30, 40, 35, 50, 55, 70, 65],
+                    backgroundColor: 'rgba(153, 102, 255, 0.5)', fill: true}]} });
+    </script>
+</body>
+</html>
